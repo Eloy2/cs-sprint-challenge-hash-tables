@@ -7,8 +7,16 @@ class Ticket:
 
 def reconstruct_trip(tickets, length):
     """
-    YOUR CODE HERE
+    The tickets are arranged in linked list fashion. Where one leads to the other.
     """
-    # Your code here
+    table = {}
+    route = []
+    for i in tickets:
+        table[i.source] = i.destination
+    ticket = table["NONE"] # Get first ticket
+    while ticket != "NONE": # While the value of the ticket is not NONE
+        route.append(ticket) # Append value to route
+        ticket = table[ticket] # Get next value by simply putting in the Key of current ticket
+    route.append(ticket) # Added this because last item in tests has NONE.
 
     return route
